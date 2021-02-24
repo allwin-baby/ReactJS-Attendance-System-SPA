@@ -1,70 +1,246 @@
-# Getting Started with Create React App
+Before UseState
+Array elements are shown using Task.js component 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+//change language mode in cmd pallete to javascriptreact to work with autocompletion ofJSX fo App.js
+//run "sudo npm start" instead of "npm start"
+//index.html->root id----------->index.js<----App.js(function template)
+------------------------------------------------------------------------
+///components-->class/function(hooks)
+//component should only have one parent
+component use  JSX ,difference we cant use class in react instead uses className, for--->htmlFor
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ES7 React/Redux/GraphQL/React-Native snippets    DOWNLOAD
+rafce---->Function Based componet 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+------------------------------------------------------------------------
+Componets
 
-### `npm test`
+1. Function Component
+function App() {
+    const text = "HELLO ALLWIN KEEP MOTIVATED"
+  return (
+    <div className="constainer">
+     <h1>{text}</h1>
+    </div>
+    //ERROR
+    <p>
+    </p>
+    //ERROR
+  );
+}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2.Class Based Component
 
-### `npm run build`
+import React from "react"  //IMP
+class App extends React.Component{
+  render(){
+    return <h1>HELLO ALLWIN KEEP MOTIVATED</h1>
+  }
+} */
+-----------------------------------------------------
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+INSERT A DYNAMIC INSIDE A COMPONNENT
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+use---->  {}
+*/
+-----------------------------------------------------
+const Tasks = () => {
+    return (
+        <> empty tag not a problem but only one Parent tag must
+        /*  ALL TAGS GOES HERE*/
+        </>
+    )
+}
+export default Tasks
+*/
+-----------------------------------------------------
+Props  !!!!METHOD 1!!!!
+custom container functions are imported to other containers.While calling child container from parent container we can pass arguments called Props  
+>>App.js
+import Header from "./components/Header"  //importing Header component from Header.js
+function App() {
+  return (
+    <div className="container">
+      <Header prop="this is a prop coming from app.js to header.js where header component is importrd to app.js "/> <br/>  
+     <h1>HELLO ALLWIN KEEP MOTIVATED</h1>
+    </div>
+  );
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+>>Componets/Header.js
+import PropTypes from 'prop-types'
 
-### `npm run eject`
+const Header = (props) => {
+    return (
+        <header>
+            <h1>This is imported from Header.js</h1>
+            <h2>{props.prop}</h2>
+            <h2>{props.title}</h2>
+        </header>
+    )
+}
+Header.defaultProps={
+    prop : "This is the default prop",
+    title:  "default title"
+}
+Header.propTypes={
+    title: PropTypes.string.isRequired
+}
+export default Header
+--------------------------------------------------------------------------
+//Prop destructring   !!!!!!!METHOD 2!!!!!
+import PropTypes from "prop-types"
+const Button=({color,text})=>{
+    return(
+        <button style={{
+            backgroundColor: "yellow",
+            border: "none",
+            color: color,
+        }}>{text}</button>
+    )
+}
+Button.defaultProps={
+    color:"green",
+    text:"CLICK ME!"
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+}
+export default Button
+--------------------------------------------------------------
+//Styling
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- The hierarchy is following order 
+index.html --- a root tag 
+index.js -----index.css is imported
+         ------App container is injected
+                                        [
+                                        import './index.css';
+                                        import App from './App';
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+                                        ReactDOM.render(
+                                        <React.StrictMode>
+                                            <App />
+                                        </React.StrictMode>,
+                                        document.getElementById('root')
+                                        );
+                                        ]
+App.js --------header is called
+Header.js ------Button is called
 
-## Learn More
+But.......All the containers are finally comes in index.html under root div element 
+So index.css applicable to all js files(Button.js,Header.js)!!!!!!! -->
+---------------------------------------------------------------------------
+import PropTypes from 'prop-types'
+const Header = (props) => {
+    return (
+        <header>
+            <h1>This is imported from Header.js</h1>
+            <h2 style={Heading2Style}>{props.prop}</h2>   ---->styling
+            <h3 style={{color:"green", backgroundColor:"blue"}}>{props.title}</h3>
+        </header>
+    )
+}
+Header.defaultProps={
+    prop : "This is the default prop",
+    title:  "default title"
+}
+Header.propTypes={
+    title: PropTypes.string.isRequired
+}
+//CSS IN JSX
+const Heading2Style={ ----->Styling
+    color:"red",
+    backgroundColor:"black"
+}
+export default Header
+-----------------------------------------------------------------------
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+CSS VS REACT STYLING ( INSIDE FUNCTION CONTAINER)
+const Button=({color,text})=>{
+    return(
+        <button style={{
+            backgroundColor: "yellow",
+            border: "none",
+            color: color,
+        }}>{text}</button>
+    )
+}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+.button {
+  background-color: #4CAF50; //wont work  ---> backgroundColor: "yellow",
+  border: none;
+  color: white;
+  padding: 15px 32px;  //wont work
+  text-align: center;   
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+-----------------------------------------------------------
+Events in JSX
+onClick Event
+//Header.js  (Button is inside Header)
 
-### Code Splitting
+const Header = (props) => {
+    //passing function defintion with Button Prop
+    function onClickFun(e){
+        console.log(e)
+        console.log("IAM CLICKED")
+    }
+    return (
+        <header>
+            <h1>This is imported from Header.js</h1>
+            <h2 style={Heading2Style}>{props.prop}</h2>
+            <h3 style={{color:"green", backgroundColor:"blue"}}>{props.title}</h3>
+            <br/>
+            {/* We can pass custom function to Button component or use same function written inside Button component */}
+            <Button color="green" text="CLICK HERE" onClick={onClickFun}/>
+        </header>
+    )
+}
+Button.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+const Button=({color,text,onClickFun})=>{
+    return(
+        <button 
+        onClick={onClickFun}
+        style={{
+            backgroundColor: "yellow",
+            border: "none",
+            color: color,
+        }}>{text}</button>
+    )
+}
+--------------------------------------------------------------
+Array to Component
+>>Task.js
 
-### Analyzing the Bundle Size
+const tasks =[
+    {
+    id:1,
+    text:"ALLWIN",
+    virgin:"YES"
+    },
+}
+const Tasks = () => {
+    return (
+        <>
+        {tasks.map((task)=> (
+        <h2 key={task.id}>{task.text}</h2>))}    /*(<h2 key={task.id}>{task}</h2>) Error: Objects are not valid as a React child (found: object with keys {id, text, virgin}). If you meant to render a collection of children, use an array instead. */
+        </>
+    )
+}
+export default Tasks
+-----------------------------------------------------------------
+STATES
+to use State inside a function we use hook called useState comes directly from react
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+import {useState} from 'react'
+const [tasks,setTasks] = useState([{data1},{data2}])-
+---->
+1."tasks" is the "name of state" and  "setTasks"
+2.is the "function to update the state" so we can't use tasks.push()
+3. Array is the default state
