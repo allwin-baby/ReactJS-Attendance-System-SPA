@@ -1,0 +1,8 @@
+.Tasks{
+  position: absolute;
+  width: 95%;
+  height: 80%;
+  top: 100px;
+  margin: 20px;
+  border: 3px solid rgb(128, 0, 111);
+}

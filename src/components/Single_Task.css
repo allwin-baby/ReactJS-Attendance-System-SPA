@@ -1,0 +1,14 @@
+.SingleTaskTrue{
+    position: relative;
+    width: 95%;
+    height: 20%;
+    margin: 20px;
+    border: 3px solid chartreuse;
+}
+.SingleTaskFalse{
+    position: relative;
+    width: 95%;
+    height: 20%;
+    margin: 20px;
+    border: 3px solid rgb(128, 0, 0);
+}

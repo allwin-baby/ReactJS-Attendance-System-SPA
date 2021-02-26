@@ -1,24 +1,15 @@
-
+import './Button.css';
 import PropTypes from "prop-types"
 //Prop destructring
-const Button=({color,text,onClickFun})=>{
+const Button=({text,onClickFun})=>{
     return(
         <>
-        <p>HELLO
-            </p>
-        <button 
-        onClick={onClickFun}
-        style={{
-            backgroundColor: "yellow",
-            border: "none",
-            color: color,
-        }}>{text}</button>
+        <button onClick={onClickFun}>{text}</button>
         </>
     )
 }
 Button.defaultProps={
-    color:"green",
-    text:"CLICK ME!"
+    text:"think you Didnt pass a prop"
 
 }
 Button.propTypes={
