@@ -3,3 +3,20 @@ https://stackoverflow.com/questions/53013437/expected-assignment-or-function-cal
 
 wrong :setTasks(tasks.map((task)=>{task.id ===id? {...task,virgin:!task.virgin}:task}))}
 correct : setTasks(tasks.map((task)=>task.id ===id? {...task,virgin:!task.virgin}:task))}
+
+
+Error:expected-onSubmit-listener-to-be-a-function-instead-got-type-object-react
+wrong : <form className="add-form"   onSubmit={{onSubmit}} >
+ <form className="add-form"   onSubmit={onSubmit} >
+
+
+wrong : <form className="add-form"  onSubmit={onSubmit()}} >
+correct: <form className="add-form"   onSubmit={onSubmit}} >
+
+
+wrong  :setTasks(...tasks,newTask)  
+correct:setTasks([...tasks,newTask])  
+
+
+<!-- DESTUCTURING 
+and  .... -->

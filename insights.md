@@ -239,7 +239,7 @@ const [tasks,setTasks] = useState([{data1},{data2}])-
 2.is the "function to update the state" so we can't use tasks.push()
 3. Array is the default state
 
-key should be given
+key should be given (list items should have a key?)
 <h2 key={task.id}>{task.text}</h2>))}
 ------------------------------------------------------------------------
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -313,3 +313,87 @@ CHANGE CLASS NAME OF JSX ELEMENT(HTML) USING IF ELSE
  <div className= {single_task.virgin == true ?"SingleTaskTrue":"SingleTaskFalse"}>
 
 ------------------------------------------------------------------------------------------
+
+Component Level State and App level State
+useState decalred inside a low level componet (text in Addform) 
+useState decalred inside a App.js componet (eg:task which should be able to access anywhre)
+
+-----------------------------------------------------------------------------------
+
+Convention
+React component Name is Capiatl letter start
+same name to file also
+
+------------------------------------------------------------------------------------
+import {useState} from 'react'
+
+import './addform.css'
+const Addform = () => {
+
+    /* state for each field ,setText is method to update state  */
+    const [text,setText] = useState('')   /* default is an empty string  */
+    const [virgin,setVirgin] = useState(false) /* default of virgin is false */
+
+    return (
+        <form className="add-form">
+            <div className="form-control">
+                <label htmlFor="">TASK</label>
+                <input type="text" placeholder="add task" 
+                value = {text} 
+                onChange ={(e)=>setText(e.target.value)}
+                />
+            </div>
+
+            <div className="form-control">
+                <label htmlFor="">Virgin</label>
+                <input type="checkbox" value = {virgin} 
+                onChange ={(e)=>setVirgin(e.currentTarget.checked)}/>
+            </div>
+            <div>
+                <input type="submit" value="saveTask"/>
+            </div>
+        </form>
+    )
+}
+export default Addform
+
+
+HERE
+
+<!-- two variables with state and stateChangeMethod -->
+const [text,setText] = useState('')   /* default of text  is an empty string  */
+const [virgin,setVirgin] = useState(false) /* default of virgin is false */
+
+1.taking and chaging value of   "text"
+<input type="text" placeholder="add task" 
+value = {text} 
+onChange ={(e)=>setText(e.target.value)}  --><!-- setText will change the value of text which shows up in value prop  (value = {text})
+/> -->
+2. taking and chaging value  of boolean
+                <input type="checkbox" 
+                checked = {virgin}
+                value = {virgin} 
+                onChange ={(e)=>{
+                    setVirgin(e.currentTarget.checked)
+                    console.log(`"value is"+ ${e.currentTarget.checked}`)
+
+------------------------------------------------------------------------------------
+
+DESTRUCTRING
+Normally passing argument 
+ 
+def function fun(arg 1, arg 2,arg4)
+executing fun(1,2,3)
+
+but in destrucring
+
+def function fun(arg1key :arg1value , arg 2:arg2value,arg4:arg4)
+executing fun({arg1key})
+
+
+.....
+Spread Across
+
+
+task = [1,2,3]
+...task = [1,2,3]

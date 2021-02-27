@@ -11,6 +11,7 @@ import './App.css';
 import Tasks from './components/Tasks'
 import Header from "./components/Header"  //importing Header component from Header.js
 import {useState} from 'react'
+import Addform from './form/Addform'
 function App() {
   const [tasks,setTasks] = useState    ([
     {
@@ -20,26 +21,34 @@ function App() {
     },
     {
     id:2,
-    text:"SHAJAL",
+    text:"SHAJAHAN",
     virgin:true
     },
     {
     id:3,
-    text:"SUNNY",
+    text:"SUN",
     virgin:false
     }
 ])
+
+const addTask = (task)=>{
+  const id = Math.floor(Math.random() * 1000) + 1 
+  const newTask = {id,...task}
+  setTasks([...tasks,newTask])     /* wrong  :setTasks(...tasks,newTask)    */ 
+}
 const toogleVirgin = (id)=>{
-  setTasks(tasks.map((task)=>task.id ===id? {...task,virgin:!task.virgin}:task))}
+  setTasks(tasks.map((task)=>task.id ===id? {...task,virgin:!task.virgin}:task))
+}
 const deleteTask = (id)=>{
   setTasks(tasks.filter((tasks)=>tasks.id!==id))  /* setTasks is the method declared in State of tasks */
 }
 
+
   return (
     <div className="container">
-      <Header prop="TaskManager"/> <br/>  
+      <Header prop="TaskManager"/> <br/> 
+      <Addform onAdd={addTask}/> 
       {/* if else in JSX */}
-
       {tasks.length>0?  /* if part */
        <Tasks  tasks={tasks} onDelete={deleteTask}  onToggle={toogleVirgin}/>   
        :"No Tasks To Show"}  {/* else part */}
@@ -48,5 +57,4 @@ const deleteTask = (id)=>{
     </div>
   );
 }
-
 export default App;

@@ -13,6 +13,4 @@ const Single_Task = ({single_task,onDelete,onToggle}) => {
         </div>
     )
 }
-
-
 export default Single_Task
