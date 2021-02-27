@@ -1,10 +1,10 @@
 import './Button.css';
 import PropTypes from "prop-types"
 //Prop destructring
-const Button=({text,onClickFun})=>{
+const Button=(props)=>{
     return(
         <>
-        <button onClick={onClickFun}>{text}</button>
+        <button onClick={props.onClickFun}>{  props.showState ==false? "ADD TASK":"CLOSE TASK"}</button>
         </>
     )
 }

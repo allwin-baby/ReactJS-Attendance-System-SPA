@@ -394,6 +394,50 @@ executing fun({arg1key})
 .....
 Spread Across
 
-
 task = [1,2,3]
 ...task = [1,2,3]
+-------------------------------------------------------------------------------------------------------
+You ca use Either Destrucring or prop
+1.Prop
+Component Call
+ <Header prop="TaskManager"  showAddprop={showAdd} /> 
+
+actual component
+const Header = (props) => {
+    ......
+    ......
+    props.prop
+    props.showAddprop()
+
+2.Destuctring Prop
+
+Component Call
+ <Header prop="TaskManager"  showAddprop={showAdd} /> 
+
+actual component
+const Header = ({prop,showAddprop}) => {
+    ......
+    ......
+    prop
+    showAddprop()
+--------------------------------------------------------------------------------
+
+HOW TO CHANGE VALUES OF STATE
+
+1. Single Values:
+    
+    const [showadd,setShow] =useState(false)    --->State Declaration
+    setShow(!showadd)                           ---->change value
+
+2.An array
+    const [tasks,setTasks] = useState    ([{}, {}, {} ])--->State Declaration
+
+    2.1 ADD
+    newTask = {}             ---->Create value
+    setTasks([...tasks,newTask])    ---->Add value
+    2.2 CHANGE
+    id =  ""   --->get value
+    setTasks(tasks.map((task)=>task.id ===id? {...task,virgin:!task.virgin}:task)) ---->change value
+    2.3 DELETE
+    id = 2    ---->fetch id 
+    setTasks(tasks.filter((tasks)=>tasks.id!==id)) ----> delete value

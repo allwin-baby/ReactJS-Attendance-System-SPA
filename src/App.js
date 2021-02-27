@@ -13,6 +13,8 @@ import Header from "./components/Header"  //importing Header component from Head
 import {useState} from 'react'
 import Addform from './form/Addform'
 function App() {
+
+  const [showadd,setShow] =useState(false)
   const [tasks,setTasks] = useState    ([
     {
     id:1,
@@ -42,12 +44,16 @@ const toogleVirgin = (id)=>{
 const deleteTask = (id)=>{
   setTasks(tasks.filter((tasks)=>tasks.id!==id))  /* setTasks is the method declared in State of tasks */
 }
-
+const showAdd = ()=>{
+  setShow(!showadd)      /*  REMEBER */  /*  (setShow(showadd=!showadd)) <-----WRONG*/
+  console.log(showadd)
+}
 
   return (
     <div className="container">
-      <Header prop="TaskManager"/> <br/> 
-      <Addform onAdd={addTask}/> 
+      <Header prop="TaskManager"  showAddprop={showAdd} showState ={showadd}/> <br/> 
+      {showadd==true?
+        <Addform onAdd={addTask} /> :""}
       {/* if else in JSX */}
       {tasks.length>0?  /* if part */
        <Tasks  tasks={tasks} onDelete={deleteTask}  onToggle={toogleVirgin}/>   

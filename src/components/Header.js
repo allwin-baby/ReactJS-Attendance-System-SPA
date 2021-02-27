@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types'
 import Button from "./Button"
 import './Header.css'
-const Header = (props) => {
-    function onClickFun(e){
-        console.log(e)
-        console.log("IAM CLICKED")
-    }
+const Header = ({prop,showAddprop,showState}) => {
+    /* const test=()=>{
+        console.log(showState)
+    } */
     return (
         <div className="Header">
-            <h1 style={Heading2Style}>{props.prop}</h1>
-            <Button  text="Add New Task" onClickFun={onClickFun}/>
+            {/* <button onClick={test}>test</button> */}
+            <h1 style={Heading2Style}>{prop}</h1>
+            <Button  text="Add New Task" onClickFun={showAddprop} showState= {showState}/>
         </div>
     )
 }
