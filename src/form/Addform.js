@@ -7,7 +7,7 @@ const Addform = ({onAdd}) => { /* wrong :const Addform = (onAdd) =>
     const onSubmit = (e)=>{ 
         e.preventDefault()   /* to prevent reload on submit? */
         if(!text){  
-            alert("please add task")
+            alert("please add Attendance")
             return 
         }
         console.log(typeof(virgin))
@@ -19,8 +19,8 @@ const Addform = ({onAdd}) => { /* wrong :const Addform = (onAdd) =>
         <form className="add-form"   onSubmit={onSubmit} >  {/* onSubmit call 
         onSubmit which check and validate the call addTask which will pass task as {object} to App.js */}
             <div className="form-control">
-                <label htmlFor="">TASK</label>
-                <input type="text" placeholder="add task" 
+                <label htmlFor="">Student</label>
+                <input type="text" placeholder="add Student" 
                 value = {text} 
                 onChange ={(e)=>{setText(e.target.value)
                     console.log(`"value is"+ ${text}`)}
@@ -29,7 +29,7 @@ const Addform = ({onAdd}) => { /* wrong :const Addform = (onAdd) =>
             </div>
 
             <div className="form-control">
-                <label htmlFor="">Virgin</label>
+                <label htmlFor="">Present</label>
                 <input type="checkbox" 
                 checked = {virgin}
                 value = {virgin} 
@@ -40,7 +40,7 @@ const Addform = ({onAdd}) => { /* wrong :const Addform = (onAdd) =>
                 }/>
             </div>
             <div>
-                <input type="submit" value="saveTask"  />
+                <input type="submit" value="saveAttendance"  />
             </div>
         </form>
     )

@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 const Button=(props)=>{
     return(
         <>
-        <button onClick={props.onClickFun}>{  props.showState ==false? "ADD TASK":"CLOSE TASK"}</button>
+        <button onClick={props.onClickFun}>{  props.showState ==false? "MARK ANOTHER":"CLOSE"}</button>
         </>
     )
 }

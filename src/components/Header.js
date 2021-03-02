@@ -9,7 +9,7 @@ const Header = ({prop,showAddprop,showState}) => {
         <div className="Header">
             {/* <button onClick={test}>test</button> */}
             <h1 style={Heading2Style}>{prop}</h1>
-            <Button  text="Add New Task" onClickFun={showAddprop} showState= {showState}/>
+            <Button  text="Add New Student" onClickFun={showAddprop} showState= {showState}/>
         </div>
     )
 }

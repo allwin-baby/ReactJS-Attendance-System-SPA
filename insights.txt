@@ -1,6 +1,6 @@
-//change language mode in cmd pallete to javascriptreact to work with autocompletion ofJSX fo App.js
+//change language mode in cmd pallete to javascriptreact to work with autocompletion of JSX fo App.js
 //run "sudo npm start" instead of "npm start"
-//index.html->root id----------->index.js<----App.js(function template)
+//index.html->root id----------->index.js<----App.js(function (component) template)
 ------------------------------------------------------------------------
 ///components-->class/function(hooks)
 //component should only have one parent
@@ -152,7 +152,7 @@ const Heading2Style={ ----->Styling
 export default Header
 -----------------------------------------------------------------------
 
-CSS VS REACT STYLING ( INSIDE FUNCTION CONTAINER)
+INLINE CSS VS REACT STYLING ( INSIDE FUNCTION CONTAINER)
 const Button=({color,text})=>{
     return(
         <button style={{
